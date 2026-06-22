@@ -6,6 +6,10 @@ let player = {
     calmness: 5
 };
 
+/* =====================
+   НАВИГАЦИЯ ЭКРАНОВ
+===================== */
+
 function show(id) {
 
     document.querySelectorAll(".screen").forEach(s => {
@@ -15,7 +19,9 @@ function show(id) {
     document.getElementById(id).classList.remove("hidden");
 }
 
-/* ====== КРЕАТОР ====== */
+/* =====================
+   СОЗДАНИЕ ПЕРСОНАЖА
+===================== */
 
 function update() {
 
@@ -36,17 +42,20 @@ function update() {
 
 function create() {
 
+    // сохраняем
     localStorage.setItem("dreamwalker_save", JSON.stringify(player));
 
+    // обновляем слот
     document.getElementById("saveSlot").innerText =
         `${player.name} | Логика ${player.logic} | Смелость ${player.bravery}`;
 
-    alert("Характер создан!");
-
-    show("menu");
+    // ВАЖНО: запускаем игру
+    startGame();
 }
 
-/* ====== СЕЙВЫ ====== */
+/* =====================
+   СОХРАНЕНИЯ
+===================== */
 
 function loadSave() {
 
@@ -65,12 +74,23 @@ function loadSave() {
     update();
 }
 
-/* ====== ИГРА ====== */
+/* =====================
+   ВИЗУАЛЬНАЯ НОВЕЛЛА
+===================== */
 
 const prologue = [
-    { speaker: "", text: "Холодный ветер гулял между небоскрёбами." },
-    { speaker: "Ева", text: "Где я?" },
-    { speaker: "", text: "Я не помню, как оказалась здесь..." }
+    {
+        speaker: "",
+        text: "Холодный ветер гулял между небоскрёбами."
+    },
+    {
+        speaker: "Ева",
+        text: "Где я?"
+    },
+    {
+        speaker: "",
+        text: "Я не помню, как оказалась здесь..."
+    }
 ];
 
 let currentScene = 0;
