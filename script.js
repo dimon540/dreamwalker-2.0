@@ -20,7 +20,7 @@ function show(id) {
 
 function update() {
 
-    player.name = document.getElementById("name").value || "Акира";
+    player.name = document.getElementById("name").value || "Ева";
     player.logic = document.getElementById("logic").value;
     player.empathy = document.getElementById("empathy").value;
     player.bravery = document.getElementById("bravery").value;
