@@ -17,7 +17,7 @@
 
     <button onclick="show('creator')">Новая игра</button>
     <button onclick="show('saves')">Продолжить</button>
-    <button onclick="alert('Настройки позже')">Настройки</button>
+    <button onclick="show('settings')">Настройки</button>
 
 </div>
 
@@ -54,6 +54,48 @@
 
     <div id="saveSlot">Пусто</div>
 
+    <button onclick="show('menu')">Назад</button>
+
+</div>
+
+<!-- НАСТРОЙКИ -->
+<div id="settings" class="screen hidden">
+
+    <h2>Настройки</h2>
+
+    <label>🔊 Музыка</label>
+    <input type="range" id="musicVolume" min="0" max="100" value="70">
+
+    <label>🔔 Эффекты</label>
+    <input type="range" id="sfxVolume" min="0" max="100" value="70">
+
+    <label>📝 Скорость текста</label>
+    <select id="textSpeed">
+        <option>Медленно</option>
+        <option selected>Нормально</option>
+        <option>Быстро</option>
+    </select>
+
+    <label>🔤 Размер текста</label>
+    <select id="textSize">
+        <option>Маленький</option>
+        <option selected>Средний</option>
+        <option>Большой</option>
+    </select>
+
+    <label>🎬 Анимации</label>
+    <select id="animations">
+        <option selected>Включены</option>
+        <option>Выключены</option>
+    </select>
+
+    <label>▶ Автопрокрутка</label>
+    <select id="autoplay">
+        <option selected>Выключена</option>
+        <option>Включена</option>
+    </select>
+
+    <button onclick="saveSettings()">Сохранить настройки</button>
     <button onclick="show('menu')">Назад</button>
 
 </div>
