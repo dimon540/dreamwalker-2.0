@@ -15,6 +15,8 @@ function show(id) {
     document.getElementById(id).classList.remove("hidden");
 }
 
+/* ====== КРЕАТОР ====== */
+
 function update() {
 
     player.name = document.getElementById("name").value || "Ева";
@@ -36,10 +38,34 @@ function create() {
 
     localStorage.setItem("dreamwalker_save", JSON.stringify(player));
 
-    startGame();
+    document.getElementById("saveSlot").innerText =
+        `${player.name} | Логика ${player.logic} | Смелость ${player.bravery}`;
+
+    alert("Характер создан!");
+
+    show("menu");
 }
 
-/* ====== ДИАЛОГИ ====== */
+/* ====== СЕЙВЫ ====== */
+
+function loadSave() {
+
+    const save = localStorage.getItem("dreamwalker_save");
+
+    if (!save) {
+        alert("Сохранений нет");
+        return;
+    }
+
+    player = JSON.parse(save);
+
+    alert("Сейв загружен: " + player.name);
+
+    show("creator");
+    update();
+}
+
+/* ====== ИГРА ====== */
 
 const prologue = [
     { speaker: "", text: "Холодный ветер гулял между небоскрёбами." },
