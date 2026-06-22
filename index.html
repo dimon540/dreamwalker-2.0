@@ -10,7 +10,7 @@
 
 <body>
 
-<!-- ГЛАВНОЕ МЕНЮ -->
+<!-- МЕНЮ -->
 <div id="menu" class="screen">
 
     <h1>DREAMWALKER</h1>
@@ -28,54 +28,37 @@
 
     <input id="name" placeholder="Имя (Ева)" oninput="update()" />
 
-    <label>🧠 Логика</label>
+    <label>Логика</label>
     <input type="range" id="logic" min="1" max="10" value="5" oninput="update()">
 
-    <label>❤️ Эмпатия</label>
+    <label>Эмпатия</label>
     <input type="range" id="empathy" min="1" max="10" value="5" oninput="update()">
 
-    <label>🔥 Смелость</label>
+    <label>Смелость</label>
     <input type="range" id="bravery" min="1" max="10" value="5" oninput="update()">
 
-    <label>😶 Спокойствие</label>
+    <label>Спокойствие</label>
     <input type="range" id="calmness" min="1" max="10" value="5" oninput="update()">
 
     <div id="preview"></div>
 
-   <button onclick="startGame()">Начать историю</button>
+    <button onclick="create()">Начать историю</button>
     <button onclick="show('menu')">Назад</button>
 
 </div>
 
-<!-- СОХРАНЕНИЯ -->
-<div id="saves" class="screen hidden">
-
-    <h2>Сохранения</h2>
-
-    <div id="saveSlot">Пусто</div>
-
-    <button onclick="show('menu')">Назад</button>
-
-</div>
-
-<!-- НАСТРОЙКИ -->
-<div id="settings" class="screen hidden">
-    <!-- ИГРА -->
+<!-- ИГРА -->
 <div id="game" class="screen hidden">
 
-    <div id="background">
+    <div id="gameContainer">
 
         <div id="dialogBox">
 
             <div id="speaker"></div>
 
-            <div id="dialogText">
-                Текст появится здесь...
-            </div>
+            <div id="dialogText"></div>
 
-            <button onclick="nextScene()">
-                Далее
-            </button>
+            <button onclick="nextScene()">Далее</button>
 
         </div>
 
@@ -83,43 +66,24 @@
 
 </div>
 
+<!-- СОХРАНЕНИЯ -->
+<div id="saves" class="screen hidden">
+    <h2>Сохранения</h2>
+    <div id="saveSlot">Пусто</div>
+    <button onclick="show('menu')">Назад</button>
+</div>
+
+<!-- НАСТРОЙКИ -->
+<div id="settings" class="screen hidden">
     <h2>Настройки</h2>
 
-    <label>🔊 Музыка</label>
-    <input type="range" id="musicVolume" min="0" max="100" value="70">
+    <label>Музыка</label>
+    <input type="range">
 
-    <label>🔔 Эффекты</label>
-    <input type="range" id="sfxVolume" min="0" max="100" value="70">
+    <label>Эффекты</label>
+    <input type="range">
 
-    <label>📝 Скорость текста</label>
-    <select id="textSpeed">
-        <option>Медленно</option>
-        <option selected>Нормально</option>
-        <option>Быстро</option>
-    </select>
-
-    <label>🔤 Размер текста</label>
-    <select id="textSize">
-        <option>Маленький</option>
-        <option selected>Средний</option>
-        <option>Большой</option>
-    </select>
-
-    <label>🎬 Анимации</label>
-    <select id="animations">
-        <option selected>Включены</option>
-        <option>Выключены</option>
-    </select>
-
-    <label>▶ Автопрокрутка</label>
-    <select id="autoplay">
-        <option selected>Выключена</option>
-        <option>Включена</option>
-    </select>
-
-    <button onclick="saveSettings()">Сохранить настройки</button>
     <button onclick="show('menu')">Назад</button>
-
 </div>
 
 <script src="script.js"></script>
