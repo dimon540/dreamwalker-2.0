@@ -10,8 +10,8 @@
 
 <body>
 
-<!-- МЕНЮ -->
-<div id="menu" class="screen active">
+<!-- ГЛАВНОЕ МЕНЮ -->
+<div id="menu" class="screen">
 
     <h1>DREAMWALKER</h1>
 
@@ -21,49 +21,28 @@
 
 </div>
 
-<!-- СОЗДАНИЕ ПЕРСОНАЖА -->
+<!-- СОЗДАНИЕ ХАРАКТЕРА -->
 <div id="creator" class="screen hidden">
 
-    <h2>Создание персонажа</h2>
-
-    <div id="preview"></div>
+    <h2>Создание характера</h2>
 
     <input id="name" placeholder="Имя (Акира)" oninput="update()" />
 
-    <label>Волосы</label>
-    <select id="hair" onchange="update()">
-        <option value="Короткие">Короткие</option>
-        <option value="Длинные">Длинные</option>
-        <option value="Хвост">Хвост</option>
-    </select>
+    <label>🧠 Логика</label>
+    <input type="range" id="logic" min="1" max="10" value="5" oninput="update()">
 
-    <label>Цвет волос</label>
-    <select id="hairColor" onchange="update()">
-        <option value="Чёрные">Чёрные</option>
-        <option value="Коричневые">Коричневые</option>
-        <option value="Блондин">Блондин</option>
-        <option value="Рыжие">Рыжие</option>
-        <option value="Белые">Белые</option>
-        <option value="Синие">Синие</option>
-        <option value="Серебро">Серебро</option>
-    </select>
+    <label>❤️ Эмпатия</label>
+    <input type="range" id="empathy" min="1" max="10" value="5" oninput="update()">
 
-    <label>Глаза</label>
-    <select id="eyes" onchange="update()">
-        <option value="Голубые">Голубые</option>
-        <option value="Карие">Карие</option>
-        <option value="Зелёные">Зелёные</option>
-        <option value="Серые">Серые</option>
-    </select>
+    <label>🔥 Смелость</label>
+    <input type="range" id="bravery" min="1" max="10" value="5" oninput="update()">
 
-    <label>Кожа</label>
-    <select id="skin" onchange="update()">
-        <option value="Светлая">Светлая</option>
-        <option value="Средняя">Средняя</option>
-        <option value="Тёмная">Тёмная</option>
-    </select>
+    <label>😶 Спокойствие</label>
+    <input type="range" id="calmness" min="1" max="10" value="5" oninput="update()">
 
-    <button onclick="create()">Создать персонажа</button>
+    <div id="preview"></div>
+
+    <button onclick="create()">Начать историю</button>
     <button onclick="show('menu')">Назад</button>
 
 </div>
@@ -73,7 +52,7 @@
 
     <h2>Сохранения</h2>
 
-    <div class="slot" id="saveSlot">Пусто</div>
+    <div id="saveSlot">Пусто</div>
 
     <button onclick="show('menu')">Назад</button>
 
