@@ -42,7 +42,7 @@
 
     <div id="preview"></div>
 
-    <button onclick="create()">Начать историю</button>
+   <button onclick="startGame()">Начать историю</button>
     <button onclick="show('menu')">Назад</button>
 
 </div>
@@ -60,6 +60,28 @@
 
 <!-- НАСТРОЙКИ -->
 <div id="settings" class="screen hidden">
+    <!-- ИГРА -->
+<div id="game" class="screen hidden">
+
+    <div id="background">
+
+        <div id="dialogBox">
+
+            <div id="speaker"></div>
+
+            <div id="dialogText">
+                Текст появится здесь...
+            </div>
+
+            <button onclick="nextScene()">
+                Далее
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
     <h2>Настройки</h2>
 
