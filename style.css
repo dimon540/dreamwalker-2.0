@@ -128,3 +128,30 @@ button {
     position: relative;
     z-index: 10;
 }
+.hidden {
+    display: none;
+}
+
+#gameContainer {
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+}
+
+#dialogBox {
+    width: 100%;
+    background: rgba(0,0,0,0.85);
+    padding: 20px;
+    color: white;
+}
+
+#speaker {
+    color: #4da6ff;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#dialogText {
+    min-height: 80px;
+    margin-bottom: 10px;
+}
