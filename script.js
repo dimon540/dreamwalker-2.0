@@ -7,15 +7,12 @@ let player = {
 };
 
 function show(id) {
-    document.querySelectorAll('.screen').forEach(s => {
-        s.classList.add('hidden');
+
+    document.querySelectorAll(".screen").forEach(s => {
+        s.classList.add("hidden");
     });
 
-    document.getElementById(id).classList.remove('hidden');
-
-    if (id === "creator") {
-        update();
-    }
+    document.getElementById(id).classList.remove("hidden");
 }
 
 function update() {
@@ -27,11 +24,11 @@ function update() {
     player.calmness = document.getElementById("calmness").value;
 
     document.getElementById("preview").innerHTML = `
-        <div><b>${player.name}</b></div>
-        <div>🧠 Логика: ${player.logic}/10</div>
-        <div>❤️ Эмпатия: ${player.empathy}/10</div>
-        <div>🔥 Смелость: ${player.bravery}/10</div>
-        <div>😶 Спокойствие: ${player.calmness}/10</div>
+        <b>${player.name}</b><br>
+        Логика: ${player.logic}/10<br>
+        Эмпатия: ${player.empathy}/10<br>
+        Смелость: ${player.bravery}/10<br>
+        Спокойствие: ${player.calmness}/10
     `;
 }
 
@@ -39,39 +36,24 @@ function create() {
 
     localStorage.setItem("dreamwalker_save", JSON.stringify(player));
 
-    document.getElementById("saveSlot").innerText =
-        `${player.name} | Логика ${player.logic} | Смелость ${player.bravery}`;
-
-    alert("Характер создан!");
-
-    show("menu");
+    startGame();
 }
+
+/* ====== ДИАЛОГИ ====== */
+
 const prologue = [
-
-    {
-        speaker: "",
-        text: "Холодный ветер гулял между небоскрёбами."
-    },
-
-    {
-        speaker: "Ева",
-        text: "Где я?.."
-    },
-
-    {
-        speaker: "",
-        text: "Я не помню, как оказалась здесь."
-    }
-
+    { speaker: "", text: "Холодный ветер гулял между небоскрёбами." },
+    { speaker: "Ева", text: "Где я?" },
+    { speaker: "", text: "Я не помню, как оказалась здесь..." }
 ];
 
 let currentScene = 0;
 
 function startGame() {
 
-    show("game");
-
     currentScene = 0;
+
+    show("game");
 
     loadScene();
 }
@@ -89,12 +71,8 @@ function nextScene() {
 
     currentScene++;
 
-    if(currentScene >= prologue.length) {
-
-        alert("Конец демо сцены");
-
+    if (currentScene >= prologue.length) {
         show("menu");
-
         return;
     }
 
