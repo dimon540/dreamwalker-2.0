@@ -68,13 +68,20 @@
 
 <!-- СОХРАНЕНИЯ -->
 <div id="saves" class="screen hidden">
+
     <h2>Сохранения</h2>
-    <div id="saveSlot">Пусто</div>
+
+    <button id="saveSlot" onclick="loadSave()">
+        Пусто
+    </button>
+
     <button onclick="show('menu')">Назад</button>
+
 </div>
 
 <!-- НАСТРОЙКИ -->
 <div id="settings" class="screen hidden">
+
     <h2>Настройки</h2>
 
     <label>Музыка</label>
@@ -84,6 +91,7 @@
     <input type="range">
 
     <button onclick="show('menu')">Назад</button>
+
 </div>
 
 <script src="script.js"></script>
