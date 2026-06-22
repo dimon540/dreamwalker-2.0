@@ -46,3 +46,57 @@ function create() {
 
     show("menu");
 }
+const prologue = [
+
+    {
+        speaker: "",
+        text: "Холодный ветер гулял между небоскрёбами."
+    },
+
+    {
+        speaker: "Ева",
+        text: "Где я?.."
+    },
+
+    {
+        speaker: "",
+        text: "Я не помню, как оказалась здесь."
+    }
+
+];
+
+let currentScene = 0;
+
+function startGame() {
+
+    show("game");
+
+    currentScene = 0;
+
+    loadScene();
+}
+
+function loadScene() {
+
+    document.getElementById("speaker").innerText =
+        prologue[currentScene].speaker;
+
+    document.getElementById("dialogText").innerText =
+        prologue[currentScene].text;
+}
+
+function nextScene() {
+
+    currentScene++;
+
+    if(currentScene >= prologue.length) {
+
+        alert("Конец демо сцены");
+
+        show("menu");
+
+        return;
+    }
+
+    loadScene();
+}
