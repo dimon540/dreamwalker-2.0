@@ -15,11 +15,11 @@
 
     <h1>DREAMWALKER</h1>
 
-    <button onclick="showScreen('creator')">Новая игра</button>
-    <button onclick="showScreen('saves')">Продолжить</button>
-    <button onclick="alert('Настройки позже')">Настройки</button>
+    <button onclick="show('creator')">Новая игра</button>
+    <button onclick="loadGame()">Продолжить</button>
+    <button onclick="show('saves')">Сохранения</button>
 
-    <div id="version">Alpha 0.2</div>
+    <div id="version">Alpha 0.3</div>
 
 </div>
 
@@ -28,33 +28,32 @@
 
     <h2>Создание персонажа</h2>
 
-    <input id="name" placeholder="Имя (Акира)" />
+    <p id="preview">Имя: Акира</p>
 
-    <label>Прическа</label>
-    <select id="hair">
+    <input id="name" placeholder="Имя" oninput="updatePreview()" />
+
+    <select id="hair" onchange="updatePreview()">
         <option>Короткие</option>
         <option>Длинные</option>
         <option>Хвост</option>
         <option>Каре</option>
     </select>
 
-    <label>Цвет глаз</label>
-    <select id="eyes">
+    <select id="eyes" onchange="updatePreview()">
         <option>Голубые</option>
         <option>Карие</option>
         <option>Зелёные</option>
         <option>Серые</option>
     </select>
 
-    <label>Кожа</label>
-    <select id="skin">
+    <select id="skin" onchange="updatePreview()">
         <option>Светлая</option>
         <option>Средняя</option>
         <option>Тёмная</option>
     </select>
 
-    <button onclick="createCharacter()">Создать персонажа</button>
-    <button onclick="showScreen('menu')">Назад</button>
+    <button onclick="create()">Создать персонажа</button>
+    <button onclick="show('menu')">Назад</button>
 
 </div>
 
@@ -63,25 +62,17 @@
 
     <h2>Сохранения</h2>
 
-    <div class="save-slot">Пусто</div>
-    <div class="save-slot">Пусто</div>
-    <div class="save-slot">Пусто</div>
+    <div id="saveSlots"></div>
 
-    <button onclick="showScreen('menu')">Назад</button>
+    <button onclick="show('menu')">Назад</button>
 
 </div>
 
 <script>
 
-let player = {
-    name: "Акира",
-    hair: "",
-    eyes: "",
-    skin: ""
-};
+let player = {};
 
-function showScreen(id) {
-
+function show(id){
     document.querySelectorAll('.screen').forEach(s => {
         s.classList.remove('active');
         s.classList.add('hidden');
@@ -91,20 +82,76 @@ function showScreen(id) {
     document.getElementById(id).classList.add('active');
 }
 
-function createCharacter() {
+/* ПРЕДПРОСМОТР */
+function updatePreview(){
+    let name = document.getElementById("name").value || "Акира";
+    let hair = document.getElementById("hair").value;
+    let eyes = document.getElementById("eyes").value;
+    let skin = document.getElementById("skin").value;
 
-    player.name = document.getElementById('name').value || "Акира";
-    player.hair = document.getElementById('hair').value;
-    player.eyes = document.getElementById('eyes').value;
-    player.skin = document.getElementById('skin').value;
-
-    alert(
-        "Персонаж создан!\n" +
-        player.name
-    );
-
-    showScreen('menu');
+    document.getElementById("preview").innerText =
+        `Имя: ${name} | Волосы: ${hair} | Глаза: ${eyes} | Кожа: ${skin}`;
 }
+
+/* СОЗДАНИЕ ПЕРСОНАЖА */
+function create(){
+
+    player = {
+        name: document.getElementById("name").value || "Акира",
+        hair: document.getElementById("hair").value,
+        eyes: document.getElementById("eyes").value,
+        skin: document.getElementById("skin").value
+    };
+
+    localStorage.setItem("dreamwalker_save", JSON.stringify(player));
+
+    alert("Персонаж создан!");
+
+    show("menu");
+}
+
+/* ПРОДОЛЖИТЬ */
+function loadGame(){
+
+    let data = localStorage.getItem("dreamwalker_save");
+
+    if(!data){
+        alert("Сохранений нет");
+        return;
+    }
+
+    player = JSON.parse(data);
+
+    alert("Загружен персонаж: " + player.name);
+}
+
+/* СОХРАНЕНИЯ */
+function renderSaves(){
+
+    let data = localStorage.getItem("dreamwalker_save");
+
+    let container = document.getElementById("saveSlots");
+
+    if(!data){
+        container.innerHTML = `
+            <div class="slot">Пусто</div>
+            <div class="slot">Пусто</div>
+            <div class="slot">Пусто</div>
+        `;
+        return;
+    }
+
+    let p = JSON.parse(data);
+
+    container.innerHTML = `
+        <div class="slot">Слот 1: ${p.name}</div>
+        <div class="slot">Пусто</div>
+        <div class="slot">Пусто</div>
+    `;
+}
+
+/* при открытии меню сохранений */
+document.getElementById("saves").addEventListener("click", renderSaves);
 
 </script>
 
