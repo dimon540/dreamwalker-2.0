@@ -11,12 +11,14 @@
 <body>
 
 <!-- МЕНЮ -->
-<div id="menu" class="screen">
+<div id="menu" class="screen active">
+
     <h1>DREAMWALKER</h1>
 
     <button onclick="show('creator')">Новая игра</button>
     <button onclick="show('saves')">Продолжить</button>
-    <button onclick="alert('Позже')">Настройки</button>
+    <button onclick="alert('Настройки позже')">Настройки</button>
+
 </div>
 
 <!-- СОЗДАНИЕ ПЕРСОНАЖА -->
@@ -30,33 +32,35 @@
 
     <label>Волосы</label>
     <select id="hair" onchange="update()">
-        <option value="hair1.png">Короткие</option>
-        <option value="hair2.png">Длинные</option>
-        <option value="hair3.png">Хвост</option>
+        <option value="Короткие">Короткие</option>
+        <option value="Длинные">Длинные</option>
+        <option value="Хвост">Хвост</option>
     </select>
+
     <label>Цвет волос</label>
-<select id="hairColor" onchange="update()">
-    <option value="black">Чёрные</option>
-    <option value="brown">Коричневые</option>
-    <option value="blonde">Блондин</option>
-    <option value="red">Рыжие</option>
-    <option value="white">Белые</option>
-    <option value="blue">Синие</option>
-    <option value="silver">Серебро</option>
-</select>
+    <select id="hairColor" onchange="update()">
+        <option value="Чёрные">Чёрные</option>
+        <option value="Коричневые">Коричневые</option>
+        <option value="Блондин">Блондин</option>
+        <option value="Рыжие">Рыжие</option>
+        <option value="Белые">Белые</option>
+        <option value="Синие">Синие</option>
+        <option value="Серебро">Серебро</option>
+    </select>
 
     <label>Глаза</label>
     <select id="eyes" onchange="update()">
-        <option value="eyes1.png">Голубые</option>
-        <option value="eyes2.png">Карие</option>
-        <option value="eyes3.png">Зелёные</option>
+        <option value="Голубые">Голубые</option>
+        <option value="Карие">Карие</option>
+        <option value="Зелёные">Зелёные</option>
+        <option value="Серые">Серые</option>
     </select>
 
     <label>Кожа</label>
     <select id="skin" onchange="update()">
-        <option value="skin1.png">Светлая</option>
-        <option value="skin2.png">Средняя</option>
-        <option value="skin3.png">Тёмная</option>
+        <option value="Светлая">Светлая</option>
+        <option value="Средняя">Средняя</option>
+        <option value="Тёмная">Тёмная</option>
     </select>
 
     <button onclick="create()">Создать персонажа</button>
@@ -69,9 +73,7 @@
 
     <h2>Сохранения</h2>
 
-    <div class="slot">Пусто</div>
-    <div class="slot">Пусто</div>
-    <div class="slot">Пусто</div>
+    <div class="slot" id="saveSlot">Пусто</div>
 
     <button onclick="show('menu')">Назад</button>
 
