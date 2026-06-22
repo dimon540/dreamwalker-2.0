@@ -1,5 +1,5 @@
 let player = {
-    name: "Акира",
+    name: "Ева",
     logic: 5,
     empathy: 5,
     bravery: 5,
