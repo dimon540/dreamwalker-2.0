@@ -1,52 +1,112 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dreamwalker</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dreamwalker</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="menu">
+<!-- ГЛАВНОЕ МЕНЮ -->
+<div id="menu" class="screen active">
 
-        <h1>DREAMWALKER</h1>
+    <h1>DREAMWALKER</h1>
 
-        <button onclick="newGame()">
-            Новая игра
-        </button>
+    <button onclick="showScreen('creator')">Новая игра</button>
+    <button onclick="showScreen('saves')">Продолжить</button>
+    <button onclick="alert('Настройки позже')">Настройки</button>
 
-        <button onclick="continueGame()">
-            Продолжить
-        </button>
+    <div id="version">Alpha 0.2</div>
 
-        <button onclick="settings()">
-            Настройки
-        </button>
+</div>
 
-        <div id="version">
-            Alpha 0.1
-        </div>
+<!-- СОЗДАНИЕ ПЕРСОНАЖА -->
+<div id="creator" class="screen hidden">
 
-    </div>
+    <h2>Создание персонажа</h2>
 
-    <script>
+    <input id="name" placeholder="Имя (Акира)" />
 
-        function newGame() {
-            alert("Создание персонажа будет здесь");
-        }
+    <label>Прическа</label>
+    <select id="hair">
+        <option>Короткие</option>
+        <option>Длинные</option>
+        <option>Хвост</option>
+        <option>Каре</option>
+    </select>
 
-        function continueGame() {
-            alert("Сохранения пока отсутствуют");
-        }
+    <label>Цвет глаз</label>
+    <select id="eyes">
+        <option>Голубые</option>
+        <option>Карие</option>
+        <option>Зелёные</option>
+        <option>Серые</option>
+    </select>
 
-        function settings() {
-            alert("Настройки будут добавлены позже");
-        }
+    <label>Кожа</label>
+    <select id="skin">
+        <option>Светлая</option>
+        <option>Средняя</option>
+        <option>Тёмная</option>
+    </select>
 
-    </script>
+    <button onclick="createCharacter()">Создать персонажа</button>
+    <button onclick="showScreen('menu')">Назад</button>
+
+</div>
+
+<!-- СОХРАНЕНИЯ -->
+<div id="saves" class="screen hidden">
+
+    <h2>Сохранения</h2>
+
+    <div class="save-slot">Пусто</div>
+    <div class="save-slot">Пусто</div>
+    <div class="save-slot">Пусто</div>
+
+    <button onclick="showScreen('menu')">Назад</button>
+
+</div>
+
+<script>
+
+let player = {
+    name: "Акира",
+    hair: "",
+    eyes: "",
+    skin: ""
+};
+
+function showScreen(id) {
+
+    document.querySelectorAll('.screen').forEach(s => {
+        s.classList.remove('active');
+        s.classList.add('hidden');
+    });
+
+    document.getElementById(id).classList.remove('hidden');
+    document.getElementById(id).classList.add('active');
+}
+
+function createCharacter() {
+
+    player.name = document.getElementById('name').value || "Акира";
+    player.hair = document.getElementById('hair').value;
+    player.eyes = document.getElementById('eyes').value;
+    player.skin = document.getElementById('skin').value;
+
+    alert(
+        "Персонаж создан!\n" +
+        player.name
+    );
+
+    showScreen('menu');
+}
+
+</script>
 
 </body>
 </html>
